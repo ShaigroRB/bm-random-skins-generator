@@ -49,10 +49,6 @@ const randomGlow = () => {
     return randomGMColor();
 }
 
-const toString = (elm) => {
-    return "" + elm + "";
-}
-
 const copy = () => {
     area.select();
     area.setSelectionRange(0, 99999);
@@ -63,16 +59,16 @@ const generate_random_skin = () => {
     area.value = "";
 
     let skin = { ...defaultSkin };
-    skin.base = !randomizationSettings.base ? defaultSkin.base : toString(randomGivenMinAndMax(0, 14));
-    skin.base_color = !randomizationSettings.base_color ? defaultSkin.base_color : toString(randomGMColor());
-    skin.pattern = !randomizationSettings.pattern ? defaultSkin.pattern : toString(randomGivenMinAndMax(0, 14));
-    skin.pattern_color = !randomizationSettings.pattern_color ? defaultSkin.pattern_color : toString(randomGMColor());
-    skin.pattern_two = !randomizationSettings.pattern_two ? defaultSkin.pattern_two : toString(randomGivenMinAndMax(0, 14));
-    skin.pattern_two_color = !randomizationSettings.pattern_two_color ? defaultSkin.pattern_two_color : toString(randomGMColor());
-    skin.effect = !randomizationSettings.effect ? defaultSkin.effect : toString(randomGivenMinAndMax(0, 9));
-    skin.effect_color = !randomizationSettings.effect_color ? defaultSkin.effect_color : toString(randomGMColor());
-    skin.glow_color_1 = !randomizationSettings.glow_color_1 ? defaultSkin.glow_color_1 : toString(randomGlow());
-    skin.glow_color_2 = !randomizationSettings.glow_color_2 ? defaultSkin.glow_color_2 : toString(randomGlow());
+    skin.base = !randomizationSettings.base ? defaultSkin.base : randomGivenMinAndMax(0, 14).toString();
+    skin.base_color = !randomizationSettings.base_color ? defaultSkin.base_color : randomGMColor().toString();
+    skin.pattern = !randomizationSettings.pattern ? defaultSkin.pattern : randomGivenMinAndMax(0, 14).toString();
+    skin.pattern_color = !randomizationSettings.pattern_color ? defaultSkin.pattern_color : randomGMColor().toString();
+    skin.pattern_two = !randomizationSettings.pattern_two ? defaultSkin.pattern_two : randomGivenMinAndMax(0, 14).toString();
+    skin.pattern_two_color = !randomizationSettings.pattern_two_color ? defaultSkin.pattern_two_color : randomGMColor().toString();
+    skin.effect = !randomizationSettings.effect ? defaultSkin.effect : randomGivenMinAndMax(0, 9).toString();
+    skin.effect_color = !randomizationSettings.effect_color ? defaultSkin.effect_color : randomGMColor().toString();
+    skin.glow_color_1 = !randomizationSettings.glow_color_1 ? defaultSkin.glow_color_1 : randomGlow().toString();
+    skin.glow_color_2 = !randomizationSettings.glow_color_2 ? defaultSkin.glow_color_2 : randomGlow().toString();
 
     area.value = JSON.stringify(skin);
 
@@ -114,19 +110,19 @@ const hexColorToGMColor = (hexColor) => {
 }
 
 const setBaseColorDefault = () => {
-    defaultSkin.base_color = hexColorToGMColor(getSelectValueGivenId("base-color-default"));
+    defaultSkin.base_color = hexColorToGMColor(getSelectValueGivenId("base-color-default")).toString();
 }
 
 const setPatternColorDefault = () => {
-    defaultSkin.pattern_color = hexColorToGMColor(getSelectValueGivenId("pattern-color-default"));
+    defaultSkin.pattern_color = hexColorToGMColor(getSelectValueGivenId("pattern-color-default")).toString();
 }
 
 const setPattern2ColorDefault = () => {
-    defaultSkin.pattern_two_color = hexColorToGMColor(getSelectValueGivenId("pattern2-color-default"));
+    defaultSkin.pattern_two_color = hexColorToGMColor(getSelectValueGivenId("pattern2-color-default")).toString();
 }
 
 const setEffectColorDefault = () => {
-    defaultSkin.effect_color = hexColorToGMColor(getSelectValueGivenId("effect-color-default"));
+    defaultSkin.effect_color = hexColorToGMColor(getSelectValueGivenId("effect-color-default")).toString();
 }
 
 let isGlowColor1Enabled = false;
@@ -145,7 +141,7 @@ const toggleIsGlowColor1Enabled = () => {
 }
 
 const setGlowColor1Default = () => {
-    defaultSkin.glow_color_1 = hexColorToGMColor(glow1Color.value);
+    defaultSkin.glow_color_1 = hexColorToGMColor(glow1Color.value).toString();
 }
 
 const toggleIsGlowColor2Enabled = () => {
@@ -159,7 +155,7 @@ const toggleIsGlowColor2Enabled = () => {
 }
 
 const setGlowColor2Default = () => {
-    defaultSkin.glow_color_2 = hexColorToGMColor(glow2Color.value);
+    defaultSkin.glow_color_2 = hexColorToGMColor(glow2Color.value).toString();
 }
 
 // Randomization settings
