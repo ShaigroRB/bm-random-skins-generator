@@ -12,7 +12,7 @@
     </style>
 </head>
 
-<body>
+<body id="skins-generator">
     <h1>Random skins generator</h1>
 
     <div>
@@ -21,9 +21,9 @@
         <textarea id="skin-json"></textarea>
     </div>
 
-    <div>
+    <div class="settings">
         <h2>Settings</h2>
-        <div>
+        <div class="default-settings">
             <h3>Default settings <span>(if a setting is not random, it will use the default)</span></h3>
             <div>
                 <div>
@@ -111,8 +111,48 @@
 
             </div>
         </div>
-        <div>
+        <div class="randomization-settings">
             <h3>Randomization</h3>
+            <div>
+                <label>Base:
+                    <input type="checkbox" onclick="toggleIsBaseRandom()" checked />
+                </label>
+                <label>Base colors:
+                    <input type="checkbox" onclick="toggleIsBaseColorsRandom()" checked />
+                </label>
+            </div>
+            <div>
+                <label>Pattern 1:
+                    <input type="checkbox" onclick="toggleIsPattern1Random()" checked />
+                </label>
+                <label>Pattern 1 colors:
+                    <input type="checkbox" onclick="toggleIsPattern1ColorsRandom()" checked />
+                </label>
+            </div>
+            <div>
+                <label>Pattern 2:
+                    <input type="checkbox" onclick="toggleIsPattern2Random()" checked />
+                </label>
+                <label>Pattern 2 colors:
+                    <input type="checkbox" onclick="toggleIsPattern2ColorsRandom()" checked />
+                </label>
+            </div>
+            <div>
+                <label>Effect:
+                    <input type="checkbox" onclick="toggleIsEffectRandom()" />
+                </label>
+                <label>Effect colors:
+                    <input type="checkbox" onclick="toggleIsEffectColorsRandom()" />
+                </label>
+            </div>
+            <div>
+                <label>Glow color 1:
+                    <input type="checkbox" onclick="toggleIsGlowColor1Random()" />
+                </label>
+                <label>Glow color 2:
+                    <input type="checkbox" onclick="toggleIsGlowColor2Random()" />
+                </label>
+            </div>
         </div>
     </div>
 

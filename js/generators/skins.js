@@ -17,6 +17,19 @@ const defaultSkin = {
     "description": "This is a skin generated randomly."
 };
 
+const randomizationSettings = {
+    "base": true,
+    "base_color": true,
+    "pattern": true,
+    "pattern_color": true,
+    "pattern_two": true,
+    "pattern_two_color": true,
+    "effect": false,
+    "effect_color": false,
+    "glow_color_1": false,
+    "glow_color_2": false,
+};
+
 const randomGivenMinAndMax = (min, max) => {
     return Math.floor((Math.random() * max) + min);
 }
@@ -82,4 +95,45 @@ const setPattern2Default = () => {
 
 const setEffectDefault = () => {
     defaultSkin.effect = getSelectValueGivenId("effect-default");
+}
+
+// Randomization settings
+const toggleIsBaseRandom = () => {
+    randomizationSettings.base = !randomizationSettings.base;
+}
+
+const toggleIsBaseColorsRandom = () => {
+    randomizationSettings.base_color = !randomizationSettings.base_color;
+}
+
+const toggleIsPattern1Random = () => {
+    randomizationSettings.pattern = !randomizationSettings.pattern;
+}
+
+const toggleIsPattern1ColorsRandom = () => {
+    randomizationSettings.pattern_color = !randomizationSettings.pattern_color;
+}
+
+const toggleIsPattern2Random = () => {
+    randomizationSettings.pattern_two = !randomizationSettings.pattern_two;
+}
+
+const toggleIsPattern2ColorsRandom = () => {
+    randomizationSettings.pattern_two_color = !randomizationSettings.pattern_two_color;
+}
+
+const toggleIsEffectRandom = () => {
+    randomizationSettings.effect = !randomizationSettings.effect;
+}
+
+const toggleIsEffectColorsRandom = () => {
+    randomizationSettings.effect_color = !randomizationSettings.effect_color;
+}
+
+const toggleIsGlowColor1Random = () => {
+    randomizationSettings.glow_color_1 = !randomizationSettings.glow_color_1;
+}
+
+const toggleIsGlowColor2Random = () => {
+    randomizationSettings.glow_color_2 = !randomizationSettings.glow_color_2;
 }
