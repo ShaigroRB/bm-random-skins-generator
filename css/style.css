@@ -12,3 +12,12 @@ body {
     display: flex;
     justify-content: space-evenly;
 }
+
+.star-button {
+    align-self: center;
+}
+
+#homepage header {
+    display: flex;
+    justify-content: space-evenly;
+}
