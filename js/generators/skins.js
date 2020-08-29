@@ -100,6 +100,35 @@ const setEffectDefault = () => {
     defaultSkin.effect = getSelectValueGivenId("effect-default");
 }
 
+const hexColorToGMColor = (hexColor) => {
+    const hexColorToRGBColor = (hexColor) => {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+    const rgbColors = hexColorToRGBColor(hexColor);
+    return rgbColors.r + (rgbColors.g * 256) + (rgbColors.b * 65536);
+}
+
+const setBaseColorDefault = () => {
+    defaultSkin.base_color = hexColorToGMColor(getSelectValueGivenId("base-color-default"));
+}
+
+const setPatternColorDefault = () => {
+    defaultSkin.pattern_color = hexColorToGMColor(getSelectValueGivenId("pattern-color-default"));
+}
+
+const setPattern2ColorDefault = () => {
+    defaultSkin.pattern_two_color = hexColorToGMColor(getSelectValueGivenId("pattern2-color-default"));
+}
+
+const setEffectColorDefault = () => {
+    defaultSkin.effect_color = hexColorToGMColor(getSelectValueGivenId("effect-color-default"));
+}
+
 // Randomization settings
 const toggleIsBaseRandom = () => {
     randomizationSettings.base = !randomizationSettings.base;

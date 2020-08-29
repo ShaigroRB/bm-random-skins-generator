@@ -39,6 +39,9 @@
                             <option value="13">13</option>
                         </select>
                     </label>
+                    <label>Base color:
+                        <input type="color" id="base-color-default" onchange="setBaseColorDefault()" />
+                    </label>
                 </div>
                 <div>
                     <label>Pattern 1:
@@ -58,6 +61,9 @@
                             <option value="12">12</option>
                             <option value="13">13</option>
                         </select>
+                    </label>
+                    <label>Pattern 1 color:
+                        <input type="color" id="pattern-color-default" onchange="setPatternColorDefault()" />
                     </label>
                 </div>
 
@@ -80,6 +86,9 @@
                             <option value="13">13</option>
                         </select>
                     </label>
+                    <label>Pattern 2 color:
+                        <input type="color" id="pattern2-color-default" onchange="setPattern2ColorDefault()" />
+                    </label>
                 </div>
 
                 <div>
@@ -101,6 +110,9 @@
                             <option value="13">13</option>
                         </select>
                     </label>
+                    <label>Effect color:
+                        <input type="color" id="effect-color-default" onchange="setEffectColorDefault()" />
+                    </label>
                 </div>
 
             </div>
@@ -111,7 +123,7 @@
                 <label>Base:
                     <input type="checkbox" onclick="toggleIsBaseRandom()" checked />
                 </label>
-                <label>Base colors:
+                <label>Base color:
                     <input type="checkbox" onclick="toggleIsBaseColorsRandom()" checked />
                 </label>
             </div>
@@ -119,7 +131,7 @@
                 <label>Pattern 1:
                     <input type="checkbox" onclick="toggleIsPattern1Random()" checked />
                 </label>
-                <label>Pattern 1 colors:
+                <label>Pattern 1 color:
                     <input type="checkbox" onclick="toggleIsPattern1ColorsRandom()" checked />
                 </label>
             </div>
@@ -127,7 +139,7 @@
                 <label>Pattern 2:
                     <input type="checkbox" onclick="toggleIsPattern2Random()" checked />
                 </label>
-                <label>Pattern 2 colors:
+                <label>Pattern 2 color:
                     <input type="checkbox" onclick="toggleIsPattern2ColorsRandom()" checked />
                 </label>
             </div>
@@ -135,7 +147,7 @@
                 <label>Effect:
                     <input type="checkbox" onclick="toggleIsEffectRandom()" />
                 </label>
-                <label>Effect colors:
+                <label>Effect color:
                     <input type="checkbox" onclick="toggleIsEffectColorsRandom()" />
                 </label>
             </div>
