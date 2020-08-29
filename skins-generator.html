@@ -9,172 +9,175 @@
 <body id="skins-generator">
     <h1>Random skins generator</h1>
 
-    <div>
-        <button onclick="generate_random_skin()">Generate skin</button>
-        <button onclick="copy()">Copy skin</button>
-        <textarea id="skin-json"></textarea>
-    </div>
+    <div class="content">
+        <div>
+            <button onclick="generate_random_skin()">Generate skin</button>
+            <button onclick="copy()">Copy skin</button>
+            <textarea id="skin-json"></textarea>
+        </div>
 
-    <div class="settings">
-        <h2>Settings</h2>
-        <div class="default-settings">
-            <h3>Default settings</h3>
-            <div>
+        <div class="settings">
+            <h2>Settings</h2>
+            <div class="default-settings">
+                <h3>Default settings</h3>
+                <div>
+                    <div>
+                        <label>Base:
+                            <select name="base-default" id="base-default" onchange="setBaseDefault()">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                            </select>
+                        </label>
+                        <label>Base color:
+                            <input type="color" id="base-color-default" onchange="setBaseColorDefault()" />
+                        </label>
+                    </div>
+                    <div>
+                        <label>Pattern 1:
+                            <select name="pattern-default" id="pattern-default" onchange="setPatternDefault()">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                            </select>
+                        </label>
+                        <label>Pattern 1 color:
+                            <input type="color" id="pattern-color-default" onchange="setPatternColorDefault()" />
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>Pattern 2:
+                            <select name="pattern2-default" id="pattern2-default" onchange="setPattern2Default()">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                            </select>
+                        </label>
+                        <label>Pattern 2 color:
+                            <input type="color" id="pattern2-color-default" onchange="setPattern2ColorDefault()" />
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>Effect:
+                            <select name="effect-default" id="effect-default" onchange="setEffectDefault()">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                            </select>
+                        </label>
+                        <label>Effect color:
+                            <input type="color" id="effect-color-default" onchange="setEffectColorDefault()" />
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>Glow color 1:
+                            <input type="checkbox" onclick="toggleIsGlowColor1Enabled()" />
+                        </label>
+                        <input type="color" id="glow1-color-default" onchange="setGlowColor1Default()"
+                            style="display: none;" />
+                    </div>
+
+                    <div>
+                        <label>Glow color 2:
+                            <input type="checkbox" onclick="toggleIsGlowColor2Enabled()" />
+                        </label>
+                        <input type="color" id="glow2-color-default" onchange="setGlowColor2Default()"
+                            style="display: none;" />
+                    </div>
+                </div>
+            </div>
+            <div class="randomization-settings">
+                <h3>Randomization</h3>
                 <div>
                     <label>Base:
-                        <select name="base-default" id="base-default" onchange="setBaseDefault()">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                        </select>
+                        <input type="checkbox" onclick="toggleIsBaseRandom()" checked />
                     </label>
                     <label>Base color:
-                        <input type="color" id="base-color-default" onchange="setBaseColorDefault()" />
+                        <input type="checkbox" onclick="toggleIsBaseColorsRandom()" checked />
                     </label>
                 </div>
                 <div>
                     <label>Pattern 1:
-                        <select name="pattern-default" id="pattern-default" onchange="setPatternDefault()">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                        </select>
+                        <input type="checkbox" onclick="toggleIsPattern1Random()" checked />
                     </label>
                     <label>Pattern 1 color:
-                        <input type="color" id="pattern-color-default" onchange="setPatternColorDefault()" />
+                        <input type="checkbox" onclick="toggleIsPattern1ColorsRandom()" checked />
                     </label>
                 </div>
-
                 <div>
                     <label>Pattern 2:
-                        <select name="pattern2-default" id="pattern2-default" onchange="setPattern2Default()">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                        </select>
+                        <input type="checkbox" onclick="toggleIsPattern2Random()" checked />
                     </label>
                     <label>Pattern 2 color:
-                        <input type="color" id="pattern2-color-default" onchange="setPattern2ColorDefault()" />
+                        <input type="checkbox" onclick="toggleIsPattern2ColorsRandom()" checked />
                     </label>
                 </div>
-
                 <div>
                     <label>Effect:
-                        <select name="effect-default" id="effect-default" onchange="setEffectDefault()">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                        </select>
+                        <input type="checkbox" onclick="toggleIsEffectRandom()" />
                     </label>
                     <label>Effect color:
-                        <input type="color" id="effect-color-default" onchange="setEffectColorDefault()" />
+                        <input type="checkbox" onclick="toggleIsEffectColorsRandom()" />
                     </label>
                 </div>
-
                 <div>
                     <label>Glow color 1:
-                        <input type="checkbox" onclick="toggleIsGlowColor1Enabled()" />
+                        <input type="checkbox" onclick="toggleIsGlowColor1Random()" />
                     </label>
-                    <input type="color" id="glow1-color-default" onchange="setGlowColor1Default()" style="display: none;" />
-                </div>
-
-                <div>
                     <label>Glow color 2:
-                        <input type="checkbox" onclick="toggleIsGlowColor2Enabled()" />
+                        <input type="checkbox" onclick="toggleIsGlowColor2Random()" />
                     </label>
-                    <input type="color" id="glow2-color-default" onchange="setGlowColor2Default()" style="display: none;" />
                 </div>
-            </div>
-        </div>
-        <div class="randomization-settings">
-            <h3>Randomization</h3>
-            <div>
-                <label>Base:
-                    <input type="checkbox" onclick="toggleIsBaseRandom()" checked />
-                </label>
-                <label>Base color:
-                    <input type="checkbox" onclick="toggleIsBaseColorsRandom()" checked />
-                </label>
-            </div>
-            <div>
-                <label>Pattern 1:
-                    <input type="checkbox" onclick="toggleIsPattern1Random()" checked />
-                </label>
-                <label>Pattern 1 color:
-                    <input type="checkbox" onclick="toggleIsPattern1ColorsRandom()" checked />
-                </label>
-            </div>
-            <div>
-                <label>Pattern 2:
-                    <input type="checkbox" onclick="toggleIsPattern2Random()" checked />
-                </label>
-                <label>Pattern 2 color:
-                    <input type="checkbox" onclick="toggleIsPattern2ColorsRandom()" checked />
-                </label>
-            </div>
-            <div>
-                <label>Effect:
-                    <input type="checkbox" onclick="toggleIsEffectRandom()" />
-                </label>
-                <label>Effect color:
-                    <input type="checkbox" onclick="toggleIsEffectColorsRandom()" />
-                </label>
-            </div>
-            <div>
-                <label>Glow color 1:
-                    <input type="checkbox" onclick="toggleIsGlowColor1Random()" />
-                </label>
-                <label>Glow color 2:
-                    <input type="checkbox" onclick="toggleIsGlowColor2Random()" />
-                </label>
             </div>
         </div>
     </div>
-
     <div>
         <a href="index.html">Home</a>
     </div>

@@ -7,3 +7,8 @@ body {
     height: 300px;
     width: 300px;
 }
+
+#skins-generator .content {
+    display: flex;
+    justify-content: space-evenly;
+}
