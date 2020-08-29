@@ -30,6 +30,7 @@ const randomizationSettings = {
     "glow_color_2": false,
 };
 
+// Skin generator
 const randomGivenMinAndMax = (min, max) => {
     return Math.floor((Math.random() * max) + min);
 }
@@ -52,28 +53,30 @@ const toString = (elm) => {
     return "" + elm + "";
 }
 
-const generate_random_skin = () => {
-    area.value = "";
-
-    let skin = { ...defaultSkin };
-    skin.base = toString(randomGivenMinAndMax(0, 14));
-    skin.base_color = toString(randomGMColor());
-    skin.pattern = toString(randomGivenMinAndMax(0, 14));
-    skin.pattern_color = toString(randomGMColor());
-    skin.pattern_two = toString(randomGivenMinAndMax(0, 14));
-    skin.pattern_two_color = toString(randomGMColor());
-    skin.effect = toString(randomGivenMinAndMax(0, 9));
-    skin.effect_color = toString(randomGMColor());
-    skin.glow_color_1 = toString(randomGlow());
-    skin.glow_color_2 = toString(randomGlow());
-
-    area.value = JSON.stringify(skin);
-}
-
 const copy = () => {
     area.select();
     area.setSelectionRange(0, 99999);
     document.execCommand("copy");
+}
+
+const generate_random_skin = () => {
+    area.value = "";
+
+    let skin = { ...defaultSkin };
+    skin.base = !randomizationSettings.base ? defaultSkin.base : toString(randomGivenMinAndMax(0, 14));
+    skin.base_color = !randomizationSettings.base_color ? defaultSkin.base_color : toString(randomGMColor());
+    skin.pattern = !randomizationSettings.pattern ? defaultSkin.pattern : toString(randomGivenMinAndMax(0, 14));
+    skin.pattern_color = !randomizationSettings.pattern_color ? defaultSkin.pattern_color : toString(randomGMColor());
+    skin.pattern_two = !randomizationSettings.pattern_two ? defaultSkin.pattern_two : toString(randomGivenMinAndMax(0, 14));
+    skin.pattern_two_color = !randomizationSettings.pattern_two_color ? defaultSkin.pattern_two_color : toString(randomGMColor());
+    skin.effect = !randomizationSettings.effect ? defaultSkin.effect : toString(randomGivenMinAndMax(0, 9));
+    skin.effect_color = !randomizationSettings.effect_color ? defaultSkin.effect_color : toString(randomGMColor());
+    skin.glow_color_1 = !randomizationSettings.glow_color_1 ? defaultSkin.glow_color_1 : toString(randomGlow());
+    skin.glow_color_2 = !randomizationSettings.glow_color_2 ? defaultSkin.glow_color_2 : toString(randomGlow());
+
+    area.value = JSON.stringify(skin);
+
+    copy();
 }
 
 // Default settings handling
