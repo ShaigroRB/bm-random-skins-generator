@@ -1,5 +1,5 @@
-area = document.getElementById("skin-json");
-defaultSkin = {
+const area = document.getElementById("skin-json");
+const defaultSkin = {
     "base": "0",
     "base_color": "0",
     "pattern": "0",
@@ -17,47 +17,47 @@ defaultSkin = {
     "description": "This is a skin generated randomly."
 };
 
-function random(min, max) {
+const randomGivenMinAndMax = (min, max) => {
     return Math.floor((Math.random() * max) + min);
 }
 
-function randomColor() {
-    red = random(0, 255);
-    green = random(0, 255) * 256;
-    blue = random(0, 255) * 65536;
+const randomGMColor = () => {
+    const red = randomGivenMinAndMax(0, 255);
+    const green = randomGivenMinAndMax(0, 255) * 256;
+    const blue = randomGivenMinAndMax(0, 255) * 65536;
     return red + green + blue;
 }
 
-function randomGlow() {
-    if (random(0, 100) < 70) {
+const randomGlow = () => {
+    if (randomGivenMinAndMax(0, 100) < 70) {
         return -1;
     }
-    return randomColor();
+    return randomGMColor();
 }
 
-function toString(elm) {
+const toString = (elm) => {
     return "" + elm + "";
 }
 
-function generate_random_skin() {
+const generate_random_skin = () => {
     area.value = "";
 
-    skin = defaultSkin;
-    skin.effect = toString(random(0, 9));
+    let skin = { ...defaultSkin };
+    skin.base = toString(randomGivenMinAndMax(0, 14));
+    skin.base_color = toString(randomGMColor());
+    skin.pattern = toString(randomGivenMinAndMax(0, 14));
+    skin.pattern_color = toString(randomGMColor());
+    skin.pattern_two = toString(randomGivenMinAndMax(0, 14));
+    skin.pattern_two_color = toString(randomGMColor());
+    skin.effect = toString(randomGivenMinAndMax(0, 9));
+    skin.effect_color = toString(randomGMColor());
     skin.glow_color_1 = toString(randomGlow());
-    skin.pattern_two = toString(random(0, 14));
-    skin.pattern_color = toString(randomColor());
-    skin.pattern = toString(random(0, 14));
-    skin.effect_color = toString(randomColor());
-    skin.base = toString(random(0, 14));
     skin.glow_color_2 = toString(randomGlow());
-    skin.base_color = toString(randomColor());
-    skin.pattern_two_color = toString(randomColor());
 
-    area.value = JSON.stringify(defaultSkin);
+    area.value = JSON.stringify(skin);
 }
 
-function copy() {
+const copy = () => {
     area.select();
     area.setSelectionRange(0, 99999);
     document.execCommand("copy");
