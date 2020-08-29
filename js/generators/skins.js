@@ -129,6 +129,39 @@ const setEffectColorDefault = () => {
     defaultSkin.effect_color = hexColorToGMColor(getSelectValueGivenId("effect-color-default"));
 }
 
+let isGlowColor1Enabled = false;
+const glow1Color = document.getElementById("glow1-color-default");
+let isGlowColor2Enabled = false;
+const glow2Color = document.getElementById("glow2-color-default");
+
+const toggleIsGlowColor1Enabled = () => {
+    isGlowColor1Enabled = !isGlowColor1Enabled;
+    if (!isGlowColor1Enabled) {
+        defaultSkin.glow_color_1 = "0";
+        glow1Color.style.display = "none";
+    } else {
+        glow1Color.style.display = "initial";
+    }
+}
+
+const setGlowColor1Default = () => {
+    defaultSkin.glow_color_1 = hexColorToGMColor(glow1Color.value);
+}
+
+const toggleIsGlowColor2Enabled = () => {
+    isGlowColor2Enabled = !isGlowColor2Enabled;
+    if (!isGlowColor2Enabled) {
+        defaultSkin.glow_color_2 = "0";
+        glow2Color.style.display = "none";
+    } else {
+        glow2Color.style.display = "initial";
+    }
+}
+
+const setGlowColor2Default = () => {
+    defaultSkin.glow_color_2 = hexColorToGMColor(glow2Color.value);
+}
+
 // Randomization settings
 const toggleIsBaseRandom = () => {
     randomizationSettings.base = !randomizationSettings.base;

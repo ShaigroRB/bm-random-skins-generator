@@ -115,6 +115,19 @@
                     </label>
                 </div>
 
+                <div>
+                    <label>Glow color 1:
+                        <input type="checkbox" onclick="toggleIsGlowColor1Enabled()" />
+                    </label>
+                    <input type="color" id="glow1-color-default" onchange="setGlowColor1Default()" style="display: none;" />
+                </div>
+
+                <div>
+                    <label>Glow color 2:
+                        <input type="checkbox" onclick="toggleIsGlowColor2Enabled()" />
+                    </label>
+                    <input type="color" id="glow2-color-default" onchange="setGlowColor2Default()" style="display: none;" />
+                </div>
             </div>
         </div>
         <div class="randomization-settings">
