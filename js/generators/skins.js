@@ -62,3 +62,24 @@ const copy = () => {
     area.setSelectionRange(0, 99999);
     document.execCommand("copy");
 }
+
+// Default settings handling
+const getSelectValueGivenId = (id) => {
+    return document.getElementById(id).value;
+}
+
+const setBaseDefault = () => {
+    defaultSkin.base = getSelectValueGivenId("base-default");
+}
+
+const setPatternDefault = () => {
+    defaultSkin.pattern = getSelectValueGivenId("pattern-default");
+}
+
+const setPattern2Default = () => {
+    defaultSkin.pattern_two = getSelectValueGivenId("pattern2-default");
+}
+
+const setEffectDefault = () => {
+    defaultSkin.effect = getSelectValueGivenId("effect-default");
+}
