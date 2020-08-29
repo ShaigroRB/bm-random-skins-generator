@@ -12,10 +12,6 @@ _Not yet implemented._
 - A bit of styling
 - Maybe redo everything in React
 
-### For skins
-- More options
-- Color picker
-
 ### For maps
 - Basic viewer
 - Procedural generation:
