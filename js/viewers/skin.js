@@ -14,16 +14,16 @@ const generateFilterForSvg = (name, color) => {
     };
 };
 
-const generateWeaponBaseForSvg = (weapon, width, height) => {
-    return '<image width="' + width + 'px" height="' + height + 'px"'
+const generateWeaponBaseForSvg = (weapon) => {
+    return '<image width="100%" height="100%"'
         + 'xlink:href="imgs/skins/' + weapon + '/' + weapon + '_base.png" />';
 };
 
 const generateWeaponPatternWithFilterForSvg = (
-    weapon, width, height,
+    weapon,
     pattern, filter_name
 ) => {
-    return '<image width="' + width + 'px" height="' + height + 'px"'
+    return '<image width="100%" height="100%"'
         + 'xlink:href="imgs/skins/' + weapon + '/' + weapon + '_' + pattern + '.png"'
         + 'filter="url(#' + filter_name + ')" />';
 };
@@ -32,12 +32,12 @@ const defs = document.getElementById("objs_definition_svg");
 const imgsGroup = document.getElementById("group_imgs_svg");
 
 const generatePatternAndItsFilterForSvg = (
-    weapon, width, height,
+    weapon,
     pattern_name, pattern, color
 ) => {
     if (pattern > 0) {
         const filterSvg = generateFilterForSvg(pattern_name, color);
-        const patternSvg = generateWeaponPatternWithFilterForSvg(weapon, width, height, pattern, filterSvg.filter_name);
+        const patternSvg = generateWeaponPatternWithFilterForSvg(weapon, pattern, filterSvg.filter_name);
 
         defs.innerHTML += filterSvg.filter_svg;
         imgsGroup.innerHTML += patternSvg;
@@ -54,13 +54,11 @@ const generateSvgForSkin = (
     defs.innerHTML = "";
     imgsGroup.innerHTML = "";
 
-    const width = 288;
-    const height = 192;
-    const weaponBase = generateWeaponBaseForSvg(weapon, width, height);
+    const weaponBase = generateWeaponBaseForSvg(weapon);
 
     imgsGroup.innerHTML += weaponBase;
 
-    generatePatternAndItsFilterForSvg(weapon, width, height, "base", base, base_color);
-    generatePatternAndItsFilterForSvg(weapon, width, height, "pattern1", pattern1, pattern1_color);
-    generatePatternAndItsFilterForSvg(weapon, width, height, "pattern2", pattern2, pattern2_color);
+    generatePatternAndItsFilterForSvg(weapon, "base", base, base_color);
+    generatePatternAndItsFilterForSvg(weapon, "pattern1", pattern1, pattern1_color);
+    generatePatternAndItsFilterForSvg(weapon, "pattern2", pattern2, pattern2_color);
 };
