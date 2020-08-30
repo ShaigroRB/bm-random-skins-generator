@@ -55,7 +55,7 @@ const copy = () => {
     document.execCommand("copy");
 }
 
-const generate_random_skin = () => {
+const generateRandomSkin = () => {
     area.value = "";
 
     let skin = { ...defaultSkin };
