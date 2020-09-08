@@ -84,11 +84,11 @@ const generateRandomSkin = () => {
     area.value = "";
 
     // const values to use them in the json and in the viewer
-    const base = !randomizationSettings.base ? defaultSkin.base : randomGivenMinAndMax(0, 14).toString();
+    const base = !randomizationSettings.base ? defaultSkin.base : randomGivenMinAndMax(0, 14);
     const base_color = !randomizationSettings.base_color ? defaultSkin.base_color : randomHexColor();
-    const pattern = !randomizationSettings.pattern ? defaultSkin.pattern : randomGivenMinAndMax(0, 14).toString();
+    const pattern = !randomizationSettings.pattern ? defaultSkin.pattern : randomGivenMinAndMax(0, 14);
     const pattern_color = !randomizationSettings.pattern_color ? defaultSkin.pattern_color : randomHexColor();
-    const pattern_two = !randomizationSettings.pattern_two ? defaultSkin.pattern_two : randomGivenMinAndMax(0, 14).toString();
+    const pattern_two = !randomizationSettings.pattern_two ? defaultSkin.pattern_two : randomGivenMinAndMax(0, 14);
     const pattern_two_color = !randomizationSettings.pattern_two_color ? defaultSkin.pattern_two_color : randomHexColor();
     const effect = !randomizationSettings.effect ? defaultSkin.effect : randomGivenMinAndMax(0, 9).toString();
     const effect_color = !randomizationSettings.effect_color ? defaultSkin.effect_color : randomHexColor();
@@ -97,11 +97,11 @@ const generateRandomSkin = () => {
 
     // json in text area. Always copy at the end of generation.
     let skin = { ...defaultSkin };
-    skin.base = base;
+    skin.base = base.toString();
     skin.base_color = hexColorToGMColor(base_color).toString();
-    skin.pattern = pattern;
+    skin.pattern = pattern.toString();
     skin.pattern_color = hexColorToGMColor(pattern_color).toString();
-    skin.pattern_two = pattern_two;
+    skin.pattern_two = pattern_two.toString();
     skin.pattern_two_color = hexColorToGMColor(pattern_two_color).toString();
     skin.effect = effect;
     skin.effect_color = hexColorToGMColor(effect_color).toString();
