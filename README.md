@@ -12,6 +12,11 @@ _Not yet implemented._
 - A bit of styling
 - Maybe redo everything in React
 
+### For skins
+- Handle glow?
+- Redo the viewer to use one image per weapon for all patterns instead of multiple images (_makes it easier to add new weapons_)
+- Handle given pattern?
+
 ### For maps
 - Basic viewer
 - Procedural generation:
@@ -28,4 +33,6 @@ _Not yet implemented._
 MIT licensed.
 
 ## Contribution
-Feel free to contribute by opening issues or pull requests.
+Feel free to contribute by opening issues or pull requests.  
+
+Thanks to Sharply for splitting the images.

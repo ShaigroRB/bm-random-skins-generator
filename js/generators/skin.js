@@ -31,8 +31,33 @@ const randomizationSettings = {
 };
 
 // Skin generator
+const hexColorToGMColor = (hexColor) => {
+    const hexColorToRGBColor = (hexColor) => {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    const rgbColors = hexColorToRGBColor(hexColor);
+    let result;
+    if (rgbColors != null) {
+        result = rgbColors.r + (rgbColors.g * 256) + (rgbColors.b * 65536)
+    } else {
+        result = 0;
+    }
+    return result;
+}
+
 const randomGivenMinAndMax = (min, max) => {
     return Math.floor((Math.random() * max) + min);
+}
+
+const randomHexColor = () => {
+    const hexColor = randomGivenMinAndMax(0, 16777215).toString(16);
+    return "#" + hexColor;
 }
 
 const randomGMColor = () => {
@@ -55,24 +80,39 @@ const copy = () => {
     document.execCommand("copy");
 }
 
-const generate_random_skin = () => {
+const generateRandomSkin = () => {
     area.value = "";
 
+    // const values to use them in the json and in the viewer
+    const base = !randomizationSettings.base ? defaultSkin.base : randomGivenMinAndMax(0, 14);
+    const base_color = !randomizationSettings.base_color ? defaultSkin.base_color : randomHexColor();
+    const pattern = !randomizationSettings.pattern ? defaultSkin.pattern : randomGivenMinAndMax(0, 14);
+    const pattern_color = !randomizationSettings.pattern_color ? defaultSkin.pattern_color : randomHexColor();
+    const pattern_two = !randomizationSettings.pattern_two ? defaultSkin.pattern_two : randomGivenMinAndMax(0, 14);
+    const pattern_two_color = !randomizationSettings.pattern_two_color ? defaultSkin.pattern_two_color : randomHexColor();
+    const effect = !randomizationSettings.effect ? defaultSkin.effect : randomGivenMinAndMax(0, 9).toString();
+    const effect_color = !randomizationSettings.effect_color ? defaultSkin.effect_color : randomHexColor();
+    const glow_color_1 = !randomizationSettings.glow_color_1 ? defaultSkin.glow_color_1 : randomGlow().toString();
+    const glow_color_2 = !randomizationSettings.glow_color_2 ? defaultSkin.glow_color_2 : randomGlow().toString();
+
+    // json in text area. Always copy at the end of generation.
     let skin = { ...defaultSkin };
-    skin.base = !randomizationSettings.base ? defaultSkin.base : randomGivenMinAndMax(0, 14).toString();
-    skin.base_color = !randomizationSettings.base_color ? defaultSkin.base_color : randomGMColor().toString();
-    skin.pattern = !randomizationSettings.pattern ? defaultSkin.pattern : randomGivenMinAndMax(0, 14).toString();
-    skin.pattern_color = !randomizationSettings.pattern_color ? defaultSkin.pattern_color : randomGMColor().toString();
-    skin.pattern_two = !randomizationSettings.pattern_two ? defaultSkin.pattern_two : randomGivenMinAndMax(0, 14).toString();
-    skin.pattern_two_color = !randomizationSettings.pattern_two_color ? defaultSkin.pattern_two_color : randomGMColor().toString();
-    skin.effect = !randomizationSettings.effect ? defaultSkin.effect : randomGivenMinAndMax(0, 9).toString();
-    skin.effect_color = !randomizationSettings.effect_color ? defaultSkin.effect_color : randomGMColor().toString();
-    skin.glow_color_1 = !randomizationSettings.glow_color_1 ? defaultSkin.glow_color_1 : randomGlow().toString();
-    skin.glow_color_2 = !randomizationSettings.glow_color_2 ? defaultSkin.glow_color_2 : randomGlow().toString();
+    skin.base = base.toString();
+    skin.base_color = hexColorToGMColor(base_color).toString();
+    skin.pattern = pattern.toString();
+    skin.pattern_color = hexColorToGMColor(pattern_color).toString();
+    skin.pattern_two = pattern_two.toString();
+    skin.pattern_two_color = hexColorToGMColor(pattern_two_color).toString();
+    skin.effect = effect;
+    skin.effect_color = hexColorToGMColor(effect_color).toString();
+    skin.glow_color_1 = glow_color_1;
+    skin.glow_color_2 = glow_color_2;
 
     area.value = JSON.stringify(skin);
-
     copy();
+
+    // generate the skin for the skin viewer
+    generateSvgForSkin(base, base_color, pattern, pattern_color, pattern_two, pattern_two_color);
 }
 
 // Default settings handling
@@ -96,33 +136,20 @@ const setEffectDefault = () => {
     defaultSkin.effect = getSelectValueGivenId("effect-default");
 }
 
-const hexColorToGMColor = (hexColor) => {
-    const hexColorToRGBColor = (hexColor) => {
-        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
-        return result ? {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16)
-        } : null;
-    }
-    const rgbColors = hexColorToRGBColor(hexColor);
-    return rgbColors.r + (rgbColors.g * 256) + (rgbColors.b * 65536);
-}
-
 const setBaseColorDefault = () => {
-    defaultSkin.base_color = hexColorToGMColor(getSelectValueGivenId("base-color-default")).toString();
+    defaultSkin.base_color = getSelectValueGivenId("base-color-default");
 }
 
 const setPatternColorDefault = () => {
-    defaultSkin.pattern_color = hexColorToGMColor(getSelectValueGivenId("pattern-color-default")).toString();
+    defaultSkin.pattern_color = getSelectValueGivenId("pattern-color-default");
 }
 
 const setPattern2ColorDefault = () => {
-    defaultSkin.pattern_two_color = hexColorToGMColor(getSelectValueGivenId("pattern2-color-default")).toString();
+    defaultSkin.pattern_two_color = getSelectValueGivenId("pattern2-color-default");
 }
 
 const setEffectColorDefault = () => {
-    defaultSkin.effect_color = hexColorToGMColor(getSelectValueGivenId("effect-color-default")).toString();
+    defaultSkin.effect_color = getSelectValueGivenId("effect-color-default");
 }
 
 let isGlowColor1Enabled = false;
