@@ -10,7 +10,8 @@ class WeaponPart {
     }
 
     isPatternAvailable = (pattern) => {
-        return this.patterns.includes(pattern);
+        const nbPattern = +pattern;
+        return this.patterns.includes(nbPattern);
     }
 }
 
