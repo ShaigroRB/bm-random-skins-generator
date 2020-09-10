@@ -1,7 +1,7 @@
 const weapons = [
     new Weapon("burst_rifle", [
         new WeaponPart("burst_rifle", []),
-        new WeaponPart("burst_rifle_reload", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        new WeaponPart("burst_rifle_reload", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14])
     ]),
     new Weapon("acid_gun", [
         new WeaponPart("acid_gun", [10]),
@@ -22,7 +22,7 @@ const weapons = [
     new Weapon("burst_pistol", [
         new WeaponPart("burst_pistol", [3, 8]),
         new WeaponPart("burst_pistol_end", [2, 6, 10]),
-        new WeaponPart("burst_pistol_reload", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        new WeaponPart("burst_pistol_reload", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14])
     ]),
     new Weapon("healgun", [
         new WeaponPart("healgun", []),
@@ -38,9 +38,6 @@ const weapons = [
     ]),
     new Weapon("boomerang", [
         new WeaponPart("boomerang", [])
-    ]),
-    new Weapon("bow", [
-        new WeaponPart("bow", [])
     ]),
     new Weapon("crossbow", [
         new WeaponPart("crossbow", [])
