@@ -30,7 +30,10 @@ _Not yet implemented._
   - Optimize ladders with ladder tool
 
 ## License
-MIT licensed.
+MIT licensed.  
+
+I don't own any rights on the images in the skins folder. All copyrights revert to the images' owner and/or copyright holder.  
+Original images copyright goes to [SpasmanGames](https://twitter.com/SpasmanGames).
 
 ## Contribution
 Feel free to contribute by opening issues or pull requests.  
