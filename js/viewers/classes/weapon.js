@@ -2,17 +2,20 @@ class WeaponPart {
     /**
      * 
      * @param {string} name 
-     * @param {number[]} patterns if the list is empty, it means that all patterns are available
+     * @param {number[]} patterns_not_present List of patterns not available. If null, then no pattern is available.
      */
-    constructor(name, patterns) {
+    constructor(name, patterns_not_present) {
         this.name = name;
-        this.patterns = patterns;
+        this.patterns = patterns_not_present;
     }
 
     isPatternAvailable = (pattern) => {
         const nbPattern = +pattern;
-        return this.patterns.length === 0
-            || this.patterns.includes(nbPattern);
+
+        return this.patterns !== null
+            && (this.patterns.length === 0
+                || !(this.patterns.includes(nbPattern))
+            );
     }
 
     generateBaseForSvg = (folder) => {
