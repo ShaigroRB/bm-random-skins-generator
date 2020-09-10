@@ -71,8 +71,15 @@ const generateSvgForSkin = (
         new WeaponPattern("pattern2", pattern2, pattern2_color)
     ];
 
-    for (let i = 0; i < 3; i++) {
-        const weapon = weapons[randomGivenMinAndMax(0, weapons.length)];
-        skinViewer.innerHTML += weapon.generateSvgGivenPatterns(250, 144, weaponPatterns);
-    }
+    let copiesWeapons = [...weapons];
+    let rndIndexWeapon = randomGivenMinAndMax(0, copiesWeapons.length);
+    let rndWeapon = weapons[rndIndexWeapon];
+    let i = 0;
+    do {
+        skinViewer.innerHTML += rndWeapon.generateSvgGivenPatterns(246, 140, weaponPatterns);
+        i++;
+        copiesWeapons.splice(rndIndexWeapon, 1);
+        rndIndexWeapon = randomGivenMinAndMax(0, copiesWeapons.length);
+        rndWeapon = copiesWeapons[rndIndexWeapon];        
+    } while (i < 3);
 };
