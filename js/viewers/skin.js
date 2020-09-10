@@ -63,12 +63,16 @@ const generateSvgForSkin = (
     pattern1, pattern1_color,
     pattern2, pattern2_color
 ) => {
+    skinViewer.innerHTML = "";
+
     const weaponPatterns = [
         new WeaponPattern("base", base, base_color),
         new WeaponPattern("pattern1", pattern1, pattern1_color),
         new WeaponPattern("pattern2", pattern2, pattern2_color)
     ];
 
-    const weapon = weapons[randomGivenMinAndMax(0, weapons.length)];
-    skinViewer.innerHTML = weapon.generateSvgGivenPatterns(250, 144, weaponPatterns);
+    for (let i = 0; i < 3; i++) {
+        const weapon = weapons[randomGivenMinAndMax(0, weapons.length)];
+        skinViewer.innerHTML += weapon.generateSvgGivenPatterns(250, 144, weaponPatterns);
+    }
 };
